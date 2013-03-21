@@ -1,5 +1,7 @@
 Testapp::Application.routes.draw do
-  resources :intertexts
+  resources :intertexts #do
+    #resources :horace, :homer
+  #end
 
   resources :homers do
     resources :horaces

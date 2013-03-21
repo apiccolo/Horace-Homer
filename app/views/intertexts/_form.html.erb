@@ -1,31 +1,34 @@
 <%= form_for(@intertext) do |f| %>
-  <% if @intertext.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@intertext.errors.count, "error") %> prohibited this intertext from being saved:</h2>
+<%= error_report(@intertext) %>
+<%#= error_report(@horace) %>
+<%#= error_report(@homer) %>
 
-      <ul>
-      <% @intertext.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <table>
+    <tr>
+      <th><h3>Hor&aacute;cio</h3></th>
+      <th><h3>Homero</h3></th>
+    </tr>
+    <tr>
+      <td>    
+<%= fields_for @horace do |h1| %>
+<%= render :partial => "horaces/fields", :locals => { :f => h1 } %>
+<% end %>
+      </td>
+      <td>
+<%= fields_for @homer do |h2| %>
+<%= render :partial => "homers/fields", :locals => { :f => h2 } %>
+<% end %>
+      </td>
+    </tr>
+  </table>
 
   <div class="field">
-    <%= @intertext.horace.to_str unless @intertext.horace.nil? %>
-  </div>
-
-  <div class="field">
-    <%= @intertext.homer.to_str unless @intertext.homer.nil? %>
-  </div>
-
-  <div class="field">
-    <%= f.label :source %><br />
-    <%= f.text_area :source %>
+    <%= f.label :fonte %><br />
+    <%= f.text_area :source, :rows => 2 %>
   </div>
   <div class="field">
     <%= f.label :obs %><br />
-    <%= f.text_area :obs %>
+    <%= f.text_area :obs, :rows => 2 %>
   </div>
   <div class="actions">
     <%= f.submit %>

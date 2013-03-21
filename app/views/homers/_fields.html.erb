@@ -1,0 +1,18 @@
+<div class="field_small">
+  <%= f.label "Épico", :class => "must" %><br />
+  <%= select_tag "homer[epic]",
+                  options_for_select([["Ilíada", "Il"], ["Odisseia", "Od"]], :selected => @homer.epic)
+  %>
+</div>
+<div class="field_small">
+  <%= f.label :livro, :class => "must" %><br />
+  <%= f.number_field :book %>
+</div>
+<div class="field_small">
+  <%= f.label :versos, :class => "must" %><br />
+  <%= f.text_field :line %>
+</div>
+<div class="field">
+  <%= f.label :obs %><br />
+  <%= f.text_area :obs, :rows => 2 %>
+</div>

@@ -11,4 +11,12 @@ class Horace < ActiveRecord::Base
     tmp += " (#{self.words})" unless self.words.nil?
     return tmp
   end
+  
+  def to_ru
+    if self.ode < 10
+      return "#{self.book}0#{self.ode}"
+    else
+      return "#{self.book}#{self.ode}"
+    end
+  end
 end

@@ -29,6 +29,10 @@ a {
   }
 }
 
+table tr td {
+  vertical-align: top;
+}
+
 div {
   &.field, &.actions, &.field_small {
     margin-bottom: 10px;
@@ -50,7 +54,7 @@ input {
 
 label {
   &.must {
-    color:red;
+    font-weight:bold;
   }
 }
 

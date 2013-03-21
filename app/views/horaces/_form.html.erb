@@ -1,36 +1,7 @@
 <%= form_for(@horace) do |f| %>
-  <% if @horace.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@horace.errors.count, "error") %> prohibited this horace from being saved:</h2>
+<%= error_report(@horace) %>
 
-      <ul>
-      <% @horace.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field_small">
-    <%= f.label :livro, :class => "must" %><br />
-    <%= f.number_field :book %>
-  </div>
-  <div class="field_small">
-    <%= f.label :ode, :class => "must" %><br />
-    <%= f.number_field :ode %>
-  </div>
-  <div class="field_small">
-    <%= f.label :versos, :class => "must" %><br />
-    <%= f.text_field :line %>
-  </div>
-  <div class="field">
-    <%= f.label "Palavra(s)/expressão(ões) em destaque" %><br />
-    <%= f.text_field :words, :class => "long" %>
-  </div>
-  <div class="field">
-    <%= f.label :obs %><br />
-    <%= f.text_area :obs %>
-  </div>
+  <%= render :partial => "fields", :locals => { :f => f } %>
   <div class="actions">
     <%= f.submit %>
   </div>

@@ -1,34 +1,7 @@
 <%= form_for(@homer) do |f| %>
-  <% if @homer.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@homer.errors.count, "error") %> prohibited this homer from being saved:</h2>
+<%= error_report(@homer) %>
 
-      <ul>
-      <% @homer.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field_small">
-    <%= f.label "Épico", :class => "must" %><br />
-    <select>
-    <%= options_for_select([["Ilíada", "Il"], ["Odisseia", "Od"]], :selected => @homer.epic) %>
-    </select>
-  </div>
-  <div class="field_small">
-    <%= f.label :livro, :class => "must" %><br />
-    <%= f.number_field :book %>
-  </div>
-  <div class="field_small">
-    <%= f.label :versos, :class => "must" %><br />
-    <%= f.text_field :line %>
-  </div>
-  <div class="field">
-    <%= f.label :obs %><br />
-    <%= f.text_area :obs %>
-  </div>
+  <%= render :partial => "fields", :locals => { :f => f } %>
   <div class="actions">
     <%= f.submit %>
   </div>

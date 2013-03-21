@@ -2,7 +2,8 @@ class IntertextsController < ApplicationController
   # GET /intertexts
   # GET /intertexts.json
   def index
-    @intertexts = Intertext.all
+    @intertexts = Intertext.all(:include => [:horace, :homer],
+                                :order => "horaces.book ASC, horaces.ode ASC, horaces.line ASC")
 
     respond_to do |format|
       format.html # index.html.erb
@@ -25,7 +26,9 @@ class IntertextsController < ApplicationController
   # GET /intertexts/new.json
   def new
     @intertext = Intertext.new
-
+    @horace = Horace.new
+    @homer = Homer.new
+    
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @intertext }
@@ -35,16 +38,28 @@ class IntertextsController < ApplicationController
   # GET /intertexts/1/edit
   def edit
     @intertext = Intertext.find(params[:id])
+    @horace = @intertext.horace
+    @homer = @intertext.homer
   end
 
   # POST /intertexts
   # POST /intertexts.json
   def create
     @intertext = Intertext.new(params[:intertext])
+    
+    @horace = Horace.new(params[:horace])
+    @homer = Homer.new(params[:homer])
+    
+    @intertext.horace = @horace
+    @intertext.homer = @homer
 
     respond_to do |format|
-      if @intertext.save
-        format.html { redirect_to @intertext, notice: 'Intertext was successfully created.' }
+      if @horace.valid? and @homer.valid? and @intertext.valid?
+        @horace.save
+        @homer.save
+        @intertext.save
+        
+        format.html { redirect_to intertexts_path, notice: 'Intertext was successfully created.' }
         format.json { render json: @intertext, status: :created, location: @intertext }
       else
         format.html { render action: "new" }

@@ -1,6 +1,6 @@
 <h1>Lista de intertextos</h1>
 
-<table>
+<table id="geral">
   <tr>
     <th>Hor&aacute;cio</th>
     <th>Homero</th>
@@ -13,11 +13,14 @@
 
 <% @intertexts.each do |intertext| %>
   <tr>
-    <td><%= intertext.horace.to_str %></td>
-    <td><%= intertext.homer.to_str %></td>
+    <td>
+      <%= intertext.horace.to_str if intertext.horace %>
+    </td>
+    <td><%= intertext.homer.to_str if intertext.homer %></td>
     <td><%= intertext.source %></td>
     <td><%= intertext.obs %></td>
-    <td><%= link_to 'Show', intertext %></td>
+    <!-- td><%= link_to 'Show', intertext %></td-->
+    <td><%= link_to "Link", "http://horatius.ru/index.xps?2.1.#{intertext.horace.to_ru}", :target => "_blank" %></td>
     <td><%= link_to 'Edit', edit_intertext_path(intertext) %></td>
     <td><%= link_to 'Destroy', intertext, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
@@ -26,4 +29,4 @@
 
 <br />
 
-<%= link_to 'New Intertext', new_intertext_path %>
+<%= link_to 'Novo Intertexto', new_intertext_path %>
