@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Epic:</b>
+  <%= @homer.epic %>
+</p>
+
+<p>
+  <b>Book:</b>
+  <%= @homer.book %>
+</p>
+
+<p>
+  <b>Line:</b>
+  <%= @homer.line %>
+</p>
+
+<p>
+  <b>Obs:</b>
+  <%= @homer.obs %>
+</p>
+
+
+<%= link_to 'Edit', edit_homer_path(@homer) %> |
+<%= link_to 'Back', homers_path %>

@@ -1,0 +1,29 @@
+<h1>Listing homers</h1>
+
+<table>
+  <tr>
+    <th>Epic</th>
+    <th>Book</th>
+    <th>Line</th>
+    <th>Obs</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @homers.each do |homer| %>
+  <tr>
+    <td><%= homer.epic %></td>
+    <td><%= homer.book %></td>
+    <td><%= homer.line %></td>
+    <td><%= homer.obs %></td>
+    <td><%= link_to 'Show', homer %></td>
+    <td><%= link_to 'Edit', edit_homer_path(homer) %></td>
+    <td><%= link_to 'Destroy', homer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Homer', new_homer_path %>

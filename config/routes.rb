@@ -1,4 +1,14 @@
 Testapp::Application.routes.draw do
+  resources :intertexts
+
+  resources :homers do
+    resources :horaces
+  end
+  
+  resources :horaces do
+    resources :homers
+  end
+
   get "welcome/index"
 
   # The priority is based upon order of creation:

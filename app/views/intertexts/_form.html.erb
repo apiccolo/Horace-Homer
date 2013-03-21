@@ -1,0 +1,33 @@
+<%= form_for(@intertext) do |f| %>
+  <% if @intertext.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@intertext.errors.count, "error") %> prohibited this intertext from being saved:</h2>
+
+      <ul>
+      <% @intertext.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= @intertext.horace.to_str unless @intertext.horace.nil? %>
+  </div>
+
+  <div class="field">
+    <%= @intertext.homer.to_str unless @intertext.homer.nil? %>
+  </div>
+
+  <div class="field">
+    <%= f.label :source %><br />
+    <%= f.text_area :source %>
+  </div>
+  <div class="field">
+    <%= f.label :obs %><br />
+    <%= f.text_area :obs %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

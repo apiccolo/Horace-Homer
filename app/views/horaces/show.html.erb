@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Book:</b>
+  <%= @horace.book %>
+</p>
+
+<p>
+  <b>Ode:</b>
+  <%= @horace.ode %>
+</p>
+
+<p>
+  <b>Line:</b>
+  <%= @horace.line %>
+</p>
+
+<p>
+  <b>Words:</b>
+  <%= @horace.words %>
+</p>
+
+<p>
+  <b>Obs:</b>
+  <%= @horace.obs %>
+</p>
+
+
+<%= link_to 'Edit', edit_horace_path(@horace) %> |
+<%= link_to 'Back', horaces_path %>
