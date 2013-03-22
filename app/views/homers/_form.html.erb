@@ -1,4 +1,10 @@
-<%= form_for(@homer) do |f| %>
+<% 
+if @horace
+  url = horace_homers_path(@horace)
+else
+  url = homers_path
+end -%>
+<%= form_for(@homer, :url => url) do |f| %>
 <%= error_report(@homer) %>
 
   <%= render :partial => "fields", :locals => { :f => f } %>

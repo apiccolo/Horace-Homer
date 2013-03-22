@@ -16,4 +16,22 @@ table#geral, table#geral tr, table#geral td {
   border-spacing: 0px;
   border-collapse: collapse;
   padding: 5px;
+  vertical-align: top;
+}
+
+table#geral td.no_left_line {
+  border-left: 0px solid white;
+}
+
+table#geral td.no_right_line {
+  border-right: 0px solid white;
+}
+
+table#geral td p {
+  margin-top:0;
+  /*margin-bottom:0;*/
+}
+
+span.small {
+  font-size: 10px;
 }

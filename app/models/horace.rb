@@ -8,7 +8,7 @@ class Horace < ActiveRecord::Base
   
   def to_str
     tmp  = "#{self.book}.#{self.ode}.#{self.line}"
-    tmp += " (#{self.words})" unless self.words.nil?
+    tmp += " (#{self.words})" unless self.words.empty?
     return tmp
   end
   

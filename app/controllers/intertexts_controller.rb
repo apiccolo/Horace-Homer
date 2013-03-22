@@ -75,7 +75,7 @@ class IntertextsController < ApplicationController
 
     respond_to do |format|
       if @intertext.update_attributes(params[:intertext])
-        format.html { redirect_to @intertext, notice: 'Intertext was successfully updated.' }
+        format.html { redirect_to intertexts_path, notice: 'Intertext was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

@@ -1,5 +1,8 @@
-<h1>New homer</h1>
+<h1>Nova Cita&ccedil;&atilde;o Hom&eacute;rica</h1>
 
+<% if @horace -%>
+<p>Relacionada a <b><%= @horace.to_str %></b>.</p>
+<% end -%>
 <%= render 'form' %>
 
-<%= link_to 'Back', homers_path %>
+<%= link_to 'Back', intertexts_path %>

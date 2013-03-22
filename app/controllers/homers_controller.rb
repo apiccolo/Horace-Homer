@@ -25,6 +25,7 @@ class HomersController < ApplicationController
   # GET /homers/new.json
   def new
     @homer = Homer.new
+    @horace = Horace.find(params[:horace_id]) if params[:horace_id]
 
     respond_to do |format|
       format.html # new.html.erb
@@ -41,10 +42,18 @@ class HomersController < ApplicationController
   # POST /homers.json
   def create
     @homer = Homer.new(params[:homer])
+    if params[:horace_id]
+      @horace = Horace.find(params[:horace_id])
+      @intertext = Intertext.new
+      @intertext.horace = @horace
+      @intertext.homer = @homer
+    end
 
     respond_to do |format|
-      if @homer.save
-        format.html { redirect_to @homer, notice: 'Homer was successfully created.' }
+      if @homer.valid? and @intertext.valid?
+        @homer.save
+        @intertext.save
+        format.html { redirect_to intertexts_path, notice: 'Homer was successfully created.' }
         format.json { render json: @homer, status: :created, location: @homer }
       else
         format.html { render action: "new" }
