@@ -74,7 +74,9 @@ class IntertextsController < ApplicationController
     @intertext = Intertext.find(params[:id])
 
     respond_to do |format|
-      if @intertext.update_attributes(params[:intertext])
+      if @intertext.update_attributes(params[:intertext]) and
+         @intertext.horace.update_attributes(params[:horace]) and
+         @intertext.homer.update_attributes(params[:homer])
         format.html { redirect_to intertexts_path, notice: 'Intertext was successfully updated.' }
         format.json { head :no_content }
       else

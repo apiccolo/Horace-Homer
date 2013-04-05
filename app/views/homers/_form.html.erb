@@ -2,7 +2,7 @@
 if @horace
   url = horace_homers_path(@horace)
 else
-  url = homers_path
+  url = @homer #homers_path(@homer)
 end -%>
 <%= form_for(@homer, :url => url) do |f| %>
 <%= error_report(@homer) %>

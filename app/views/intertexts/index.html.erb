@@ -22,13 +22,17 @@
       </p>
     </td>    
     <td class="no_left_line"><%= link_to "[+]", new_horace_homer_path(intertext.horace) %></td>
-    <td><%= link_to ">>", "http://horatius.ru/index.xps?2.1.#{intertext.horace.to_ru}", :target => "_blank" %></td>
+    <td><%= link_to image_tag("link.png"), 
+                    "http://horatius.ru/index.xps?2.1.#{intertext.horace.to_ru}",
+                    :target => "_blank" %></td>
     <td class="no_right_line">
       <p><%= intertext.homer.to_str %>
         <%= tag("br") + content_tag(:span, intertext.homer.obs, :class => "small") unless intertext.homer.obs.empty? %>
       </p></td>
     <!-- td class="no_left_line"><%= link_to "[+]", new_homer_horace_path(intertext.homer) %></td-->
-    <td><%= link_to ">>", "http://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.#{intertext.homer.perseus_book}%3Abook%3D#{intertext.homer.book}%3Acard%3D#{intertext.homer.to_line}", :target => "_blank" %></td>
+    <td><%= link_to image_tag("link.png"), 
+                    "http://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.#{intertext.homer.perseus_book}%3Abook%3D#{intertext.homer.book}%3Acard%3D#{intertext.homer.to_line}",
+                    :target => "_blank" %></td>
     <td><%= intertext.source %></td>
     <td><%= intertext.obs %></td>
     <!-- td><%= link_to 'Show', intertext %></td-->
